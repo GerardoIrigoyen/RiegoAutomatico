@@ -1,2 +1,2 @@
 # RiegoAutomatico
-Sistema de riego automático hecho en Arduino para el patio de casa
+Sistema de riego automático hecho con Arduino para el patio de casa
