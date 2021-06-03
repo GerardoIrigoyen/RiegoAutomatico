@@ -1,0 +1,149 @@
+
+<!DOCTYPE HTML><html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1 ">
+   <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+<body>
+  <div class="topnav">
+  <h2>RIEGO AUTOMATICO</h2>
+  </div>
+    <div class="content">
+      <div class="cards">
+        <div class="card card-bme">
+          <i class="fas fa-wifi"></i><span class="dht-labels">&nbsp;&nbsp;Conectado a red WiFi:&nbsp;</span><span id="SSID">%ssid%</span>
+        </div>
+      <div class="card card-bme">
+        <i class="fas fa-thermometer-half" style="color:#059e8a;"></i><span class="dht-labels">&nbsp;&nbsp;Temperatura:&nbsp;</span><span id="temperature">%TEMPERATURE%</span><span class="units">&#x2103 &nbsp; &nbsp;</span>
+        <i class="fas fa-tint" style="color:#00add6;"></i><span class="dht-labels">&nbsp;&nbsp;Humedad:&nbsp;</span><span id="humidity">%HUMIDITY%</span><span class="units">&#x25</span>
+       </div>
+        <div class="card card-bme">
+          <iclass="dht-labels">&nbsp;&nbsp;Ultimo Riego:&nbsp;</span><span id="ULTIMO">%ultimavez%</span>
+        </div>
+        <div class="card card-bme">
+          <iclass="dht-labels">&nbsp;&nbsp;Riego Automatico:&nbsp;</span><span id="PROXIMO">%proximoriego%</span>
+        </div>
+          <div class="card card-bme">
+            <iclass="dht-labels">&nbsp;&nbsp;Ultimo Riego:&nbsp;</span><span id="ULTIMO">%ultimavez%</span>
+          </div>
+          <div class="card card-bme">
+            <form action="/get" target="hidden-form">Ingresar ml a regar: <input type="number " name="inputInt">
+            <input type="submit" value="REGAR!" onclick="submitMessage()">
+        
+           <p>
+            <iclass="dht-labels">Por sector se va a regar:&nbsp;</span><span id="CANTIDADRIEGO">%inputInt% &nbsp;ml</span>
+          </p>
+      
+        </div>
+      <div> 
+      <span id="boton1">%BUTTONPLACEHOLDER%</span>
+      </div>
+
+         <div class="logo">
+         <i class="fab fa-glide-g"></i>
+        </div>
+    </div>
+  
+</body>
+  <script>
+    setInterval(function ( ) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("temperature").innerHTML = this.responseText;
+    }
+    };
+    xhttp.open("GET", "/temperature", true);
+    xhttp.send();
+    }, 10000 ) ;
+
+    setInterval(function ( ) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("humidity").innerHTML = this.responseText;
+    }
+    };
+    xhttp.open("GET", "/humidity", true);
+    xhttp.send();
+    }, 10000 ) ;
+
+    setInterval(function ( ) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("SSID").innerHTML = this.responseText;
+    }
+    };
+    xhttp.open("GET", "/SSID", true);
+    xhttp.send();
+    }, 10000 ) ;
+
+    setInterval(function ( ) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("ULTIMO").innerHTML = this.responseText;
+    }
+    };
+    xhttp.open("GET", "/ULTIMO", true);
+    xhttp.send();
+    }, 2000 ) ;
+
+     setInterval(function ( ) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("PROXIMO").innerHTML = this.responseText;
+    }
+    };
+    xhttp.open("GET", "/PROXIMO", true);
+    xhttp.send();
+    }, 2000 ) ;
+
+    setInterval(function ( ) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("CANTIDADRIEGO").innerHTML = this.responseText;
+    }
+    };
+    xhttp.open("GET", "/CANTIDADRIEGO", true);
+    xhttp.send();
+    }, 1000 ) ;
+
+    setInterval(function ( ) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("boton1").innerHTML = this.responseText;
+    }
+    };
+    xhttp.open("GET", "/CANTIDADRIEGO", true);
+    xhttp.send();
+    }, 1000 ) ;
+
+
+
+    setInterval(function ( ) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("PROXIMO").innerHTML = this.responseText;
+    }
+    };
+    xhttp.open("GET", "/PROXIMO", true);
+    xhttp.send();
+    }, 2000 ) ;
+
+    function toggleCheckbox(element) {
+    var xhr = new XMLHttpRequest();
+    if(element.checked){ xhr.open("GET", "/update?relay="+element.id+"&state=1", true); }
+    else { xhr.open("GET", "/update?relay="+element.id+"&state=0", true);}
+    xhr.send();
+    }
+
+  </script>
+</html>
+getelementB

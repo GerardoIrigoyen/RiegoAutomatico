@@ -1,0 +1,46 @@
+CALCULAR CUANTO TIEMPO TARDA EN REGAR LA BOMBA 1ml.
+CONSEGUIR UNA BOMBA QUE SAQUE LA MISMA CANTIDAD DE AGUA QUE LA QUE LLENA, ASI NO SE APAGA POR FALTA DE AGUA EL SISTEMA.
+PONER UNA ENTRADA DONDE PERMITA PONER CUANTOS MILILITROS SE DESEAN SETEAR PARA REGAR. ESE VALOR VA A CAMBIAR UNA VARIABLE QUE HACE QUE DETERMINE EL TIEMPO DE RIEGO
+LUEGO CONVERTIR ESA VARIABLE DE ml  A TIEMPO DE RIEGO. 
+PONER CUANTO VA A TARDAR EN REGAR EN FUNCION DE LOS mls iNGRESADOS
+PONER EL HORARIO DE INICIO Y DE FINALIZACIÓN
+FIN
+
+
+
+
+   bomba litros hora.
+
+   cuando se ingresan los mililitros eso lo tengo que convertir a TiempodeRiego
+   quiere decir que los litros hora de la bomba es función del TiempodeRiego
+   1ml (200 metros cuadrados por sector) en una bomba de 5000 lt/h corresponde a: 
+   5000l--> 1h
+   200lt--> 0.04 (2:40 minutos)
+
+   ml riego * 200 / litros BOMBA
+
+
+   if (rssi > -10)
+  {
+    señal = "Excelente";
+  }
+  if ((rssi < -10) && (rssi > -30))
+  {
+    señal = "Muy buena";
+  }
+  if ((rssi < -30) && (rssi > -60))
+  {
+    señal = "Buena";
+  }
+  if ((rssi < -60) && (rssi > -70))
+  {
+    señal = "Mala";
+  }
+  if (rssi < -70)
+  {
+    señal = "Muy mala";
+  }
+
+
+
+
